@@ -1,0 +1,10 @@
+name: Start workflow ok
+
+on: [push]
+
+jobs:
+  build:
+    name: Build with other workflow
+    uses: ./.github/workflows/work2-build.yml
+    with:
+      custom: custom-name1

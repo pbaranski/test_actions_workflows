@@ -1,0 +1,16 @@
+name: Build fail with input test
+
+on:
+  workflow_call:
+    inputs:
+      custom:
+        description: Some custom string
+        required: true
+        type: string
+
+jobs:
+  test-custom:
+    name: 🧪 Test Custom
+    uses: ./.github/workflows/work4-${{ inputs.custom }}.yml
+  
+ 

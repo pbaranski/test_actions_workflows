@@ -1,0 +1,29 @@
+name: Build fine with input test
+
+on:
+  workflow_call:
+    inputs:
+      custom:
+        description: Some custom string
+        required: true
+        type: string
+
+jobs:
+  test1:
+    name: 🧪 Test1
+    uses: ./.github/workflows/work4-custom-name1.yml
+  
+  test2:
+    name: 🧪 Test2
+    uses: ./.github/workflows/work4-custom-name2.yml
+  
+  test-print:
+    runs-on: ubuntu-latest
+    name: Print input
+    steps:
+      - name: Step print string
+        run: echo "Hello"
+        
+      - name: Step print inputs
+        run: echo ${{ inputs.custom }}
+ 

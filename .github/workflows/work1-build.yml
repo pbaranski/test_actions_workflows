@@ -1,0 +1,10 @@
+name: Start workflow fail
+
+on: [push]
+
+jobs:  
+  build-fail:
+    name: Build with other workflow
+    uses: ./.github/workflows/work3-build-fail.yml
+    with:
+      custom: custom-name1
