@@ -13,13 +13,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       a1: steps.a.outputs.NAME
-      a2: steps.a.outputs.NAME2
     steps:
       - id: a
         run: echo "NAME=$(echo ${{ inputs.a }} | tr '-' '_' |  tr '[a-z]' '[A-Z]')" >> $GITHUB_OUTPUT
-
-      - id: b
-        run: echo "NAME2=$(${{steps.a.outputs.NAME}})" >> $GITHUB_OUTPUT
 
       - id: c
         run: echo steps.a.outputs.NAME
@@ -28,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: simple
     steps:
-      - run: echo ${{ needs.simple.outputs.a2 }}
+      - run: echo ${{needs.simple.outputs.a1}}
 
   job1:
     runs-on: ubuntu-latest
