@@ -12,28 +12,30 @@ jobs:
   test1:
     name: 🧪 Test1
     uses: ./.github/workflows/work4-custom-name2.yml
+    with:
+     a: "asdf-as-fas-df-a"
   
-  test2:
-    name: 🧪 Test2
-    needs: test1
-    if: |
-      alwys() &&
-      inputs.required
-    runs-on: ubuntu-latest
-    steps:
-      - name: Step print string
-        run: echo "true"
+  # test2:
+  #   name: 🧪 Test2
+  #   needs: test1
+  #   if: |
+  #     alwys() &&
+  #     inputs.required
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Step print string
+  #       run: echo "true"
 
-  test3:
-    name: 🧪 Test2
-    needs: test1
-    if: |
-      alwys() &&
-      inputs.required == false
-    runs-on: ubuntu-latest
-    steps:
-      - name: Step print string
-        run: echo "false"
+  # test3:
+  #   name: 🧪 Test2
+  #   needs: test1
+  #   if: |
+  #     alwys() &&
+  #     inputs.required == false
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Step print string
+  #       run: echo "false"
 
 
  

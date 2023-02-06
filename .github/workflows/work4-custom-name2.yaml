@@ -1,10 +1,15 @@
 name: Custom 2
 
 on:
-  workflow_call
+  workflow_call:
+    inputs:
+    a:
+      required: true
+      type: string
+
   
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "IN CUSTOM 2"
+      - run: echo "${{ input.a}} | tr '-' '_' |  tr '[a-z]' '[A-Z]'"
