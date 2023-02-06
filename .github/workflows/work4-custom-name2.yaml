@@ -12,4 +12,4 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ input.a}} | tr '-' '_' |  tr '[a-z]' '[A-Z]'"
+      - run: echo "${{ inputs.a}} | tr '-' '_' |  tr '[a-z]' '[A-Z]'"
