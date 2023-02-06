@@ -1,0 +1,39 @@
+name: Build fine with input test
+
+on:
+  workflow_call:
+    inputs:
+      custom:
+        description: Some custom string
+        required: true
+        type: string
+
+jobs:
+  test1:
+    name: 🧪 Test1
+    uses: ./.github/workflows/work4-custom-name2.yml
+  
+  test2:
+    name: 🧪 Test2
+    needs: test1
+    if: |
+      alwys() &&
+      inputs.required
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step print string
+        run: echo "true"
+
+  test3:
+    name: 🧪 Test2
+    needs: test1
+    if: |
+      alwys() &&
+      inputs.required == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step print string
+        run: echo "false"
+
+
+ 
