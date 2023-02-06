@@ -16,10 +16,13 @@ jobs:
       a2: steps.a.outputs.NAME2
     steps:
       - id: a
-        run: echo "NAME=$(echo ${{ inputs.a}} | tr '-' '_' |  tr '[a-z]' '[A-Z]')" >> $GITHUB_OUTPUT
+        run: echo "NAME=$(echo ${{ inputs.a }} | tr '-' '_' |  tr '[a-z]' '[A-Z]')" >> $GITHUB_OUTPUT
 
       - id: b
-        run: echo "NAME2=${{steps.a.outputs.NAME}}" >> $GITHUB_OUTPUT
+        run: echo "NAME2=$(${{steps.a.outputs.NAME}})" >> $GITHUB_OUTPUT
+
+      - id: c
+        run: echo steps.a.outputs.NAME >> $GITHUB_OUTPUT
 
   Read-job:
     runs-on: ubuntu-latest
