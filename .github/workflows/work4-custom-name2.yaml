@@ -13,6 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: a
-        run: echo "${{ inputs.a}} | tr '-' '_' |  tr '[a-z]' '[A-Z]'" >> $GITHUB_OUTPUT
+        run: echo ${{ inputs.a}} | tr '-' '_' |  tr '[a-z]' '[A-Z]' >> $GITHUB_OUTPUT
 
       - run: echo ${{steps.a.outputs.value}}
