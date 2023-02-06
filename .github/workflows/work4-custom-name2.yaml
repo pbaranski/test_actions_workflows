@@ -22,7 +22,7 @@ jobs:
         run: echo "NAME2=$(${{steps.a.outputs.NAME}})" >> $GITHUB_OUTPUT
 
       - id: c
-        run: echo steps.a.outputs.NAME >> $GITHUB_OUTPUT
+        run: echo steps.a.outputs.NAME
 
   Read-job:
     runs-on: ubuntu-latest
