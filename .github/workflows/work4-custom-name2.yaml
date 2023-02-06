@@ -9,13 +9,18 @@ on:
 
   
 jobs:
-  Explore-GitHub-Actions:
+  simple:
     runs-on: ubuntu-latest
+    outputs:
+      app: steps.a.outputs.NAME
     steps:
       - id: a
-        # run: echo "NAME=$(echo ${{ inputs.a}} | tr '-' '_' |  tr '[a-z]' '[A-Z]')" >> $GITHUB_OUTPUT
-        run: "echo ${{ inputs.a}} | tr '-' '_' |  tr '[a-z]' '[A-Z]'" >> $GITHUB_OUTPUT
+        run: echo "NAME=$(echo ${{ inputs.a}} | tr '-' '_' |  tr '[a-z]' '[A-Z]')" >> $GITHUB_OUTPUT
         
-
-      # - run: echo ${{steps.a.outputs.NAME}}
       - run: echo ${{steps.a.outputs.NAME}}
+
+  Read-job:
+    runs-on: ubuntu-latest
+    needs: simple
+    steps:
+      - run: needs.simple.outputs.app
