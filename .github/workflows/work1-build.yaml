@@ -5,6 +5,6 @@ on: [push]
 jobs:
   build:
     name: Build with other workflow
-    uses: ./.github/workflows/work2-build.yml
+    uses: ./.github/workflows/work2-build.yaml
     with:
       custom: custom-name1
