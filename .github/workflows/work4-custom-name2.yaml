@@ -14,7 +14,7 @@ jobs:
     steps:
       - id: a
         # run: echo "NAME=$(echo ${{ inputs.a}} | tr '-' '_' |  tr '[a-z]' '[A-Z]')" >> $GITHUB_OUTPUT
-        run: echo ${{ inputs.a}} | tr '-' '_' |  tr '[a-z]' '[A-Z]' >> $GITHUB_OUTPUT
+        run: NAME=echo ${{ inputs.a}} | tr '-' '_' |  tr '[a-z]' '[A-Z]' >> $GITHUB_OUTPUT
 
       # - run: echo ${{steps.a.outputs.NAME}}
       - run: echo ${{steps.a.outputs.NAME}}
