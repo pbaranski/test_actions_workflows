@@ -21,10 +21,10 @@ jobs:
         run: echo "NAME=$(echo 'hej')" >> $GITHUB_OUTPUT
 
       - id: c
-        run: echo steps.a.outputs.NAME
+        run: echo ${{steps.a.outputs.NAME}}
       
       - id: d
-        run: echo steps.b.outputs.NAME
+        run: echo ${{steps.b.outputs.NAME}}
 
   Read-job:
     runs-on: ubuntu-latest
