@@ -10,10 +10,12 @@ on:
   
 jobs:
   simple:
+    environment: dev
     runs-on: ubuntu-latest
     outputs:
       a1: steps.a.outputs.NAME
       b1: steps.b.outputs.NAME
+      url:  steps.c1.outputs.NAME
     steps:
       - id: a
         run: echo "NAME=$(echo ${{ inputs.a }} | tr '-' '_' |  tr '[a-z]' '[A-Z]')" >> $GITHUB_OUTPUT
@@ -22,6 +24,9 @@ jobs:
 
       - id: c
         run: echo ${{steps.a.outputs.NAME}}
+
+      - id: c2
+        run: echo "NAME=$(echo ${{ secrets[format('URL_{1}', steps.a.outputs.NAME)] }})" >> $GITHUB_OUTPUT
       
       - id: d
         run: echo ${{steps.b.outputs.NAME}}
@@ -32,6 +37,7 @@ jobs:
     steps:
       - run: echo ${{needs.simple.outputs.a1}}
       - run: echo ${{needs.simple.outputs.b1}}
+      - run: echo ${{needs.simple.outputs.url}}
 
   # job1:
   #   runs-on: ubuntu-latest
