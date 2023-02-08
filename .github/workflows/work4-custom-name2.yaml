@@ -33,7 +33,8 @@ jobs:
         name: d testing env transfotmation
         run: echo ${{steps.c.outputs.NAME}}
                     
-      - id: e testing secret output
+      - id: e 
+        name: e testing secret output
         run: echo ${{ secrets.URL_M_A }}
       
       - id: f
