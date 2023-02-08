@@ -4,11 +4,23 @@ on:
   workflow_call:
     inputs:
       a:
-        required: true
+        required: false
         type: string
 
   
 jobs:
+  testparam:
+    if: {{inputs.a}}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo PARAM dziala
+
+  testNOparam:
+    if: {{inputs.a == ''}}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo PARAM pusty dziala
+  
   simple:
     environment: dev
     runs-on: ubuntu-latest
