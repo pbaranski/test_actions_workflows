@@ -10,13 +10,13 @@ on:
   
 jobs:
   testparam:
-    if: {{inputs.a}}
+    if: ${{inputs.a}}
     runs-on: ubuntu-latest
     steps:
       - run: echo PARAM dziala
 
   testNOparam:
-    if: {{inputs.a == ''}}
+    if: ${{inputs.a == ''}}
     runs-on: ubuntu-latest
     steps:
       - run: echo PARAM pusty dziala
