@@ -13,10 +13,14 @@ jobs:
     environment: dev
     runs-on: ubuntu-latest
     outputs:
-      trnsformed: steps.a.outputs.NAME
-      easy: steps.f.outputs.NAME
-      url: steps.c.outputs.NAME
+      trnsformed: ${{steps.a.outputs.NAME}}
+      easy: ${{steps.f.outputs.NAME}}
+      url: ${{steps.c.outputs.NAME}}
     steps:
+      - id: x
+        name: x testing input
+        run: echo ${{inputs.a}}
+
       - id: a
         name: a Setting transformation
         run: echo "NAME=$(echo ${{ inputs.a }} | tr '-' '_' |  tr '[a-z]' '[A-Z]')" >> $GITHUB_OUTPUT
