@@ -12,6 +12,7 @@ jobs:
   simple:
     environment: dev
     runs-on: ubuntu-latest
+    secrets: inherit
     outputs:
       transformed: ${{steps.a.outputs.NAME}}
       easy: ${{steps.f.outputs.NAME}}
@@ -54,6 +55,7 @@ jobs:
     environment: dev
     runs-on: ubuntu-latest
     needs: simple
+    secrets: inherit
     env:
         UNENCRYPTED_MAIN: ${{ secrets.URL_M_A }}
         URL: ${{ needs.simple.outputs.url }}
