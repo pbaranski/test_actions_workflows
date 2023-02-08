@@ -68,14 +68,14 @@ jobs:
         run: |
           import os
           for q in (os.getenv("URL")):
-          print(q)
+            print(q)
         shell: python
 
       - name: url script
         run: |
           import os
           for q in (os.getenv("URL_SCR")):
-          print(q)
+            print(q)
         shell: python
 
   # job1:
