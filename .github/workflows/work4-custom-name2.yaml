@@ -39,7 +39,7 @@ jobs:
                     
       - id: e 
         name: e testing secret output
-        run: echo ${{ secrets.URL_M_A }}
+        run: echo -n "${{ secrets.URL_M_A }}" >> foo && cut -c1-3 foo && cut -c4
       
       - id: f
         name: f setting simple step output
