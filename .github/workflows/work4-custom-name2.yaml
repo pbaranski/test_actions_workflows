@@ -23,7 +23,8 @@ jobs:
 
       - id: a
         name: a Setting transformation
-        run: echo "NAME=$(echo ${{ inputs.a }} | tr '-' '_' |  tr '[a-z]' '[A-Z]')" >> $GITHUB_OUTPUT
+        # run: echo "NAME=$(echo ${{ inputs.a }} | tr '-' '_' |  tr '[a-z]' '[A-Z]')" >> $GITHUB_OUTPUT
+        run: echo "NAME=$(echo ${{ inputs.a }} | tr '-' '_')" >> $GITHUB_OUTPUT
       
       - id: b
         name: b testing transformation
@@ -35,7 +36,7 @@ jobs:
       
       - id: d
         name: d testing env transfotmation
-        run: echo echo -n "${{steps.c.outputs.NAME}}" >> foo && cut -c1-3 foo && cut -c4
+        run: echo -n "${{steps.c.outputs.NAME}}" >> foo && cut -c1-3 foo && cut -c4
                     
       - id: e 
         name: e testing secret output
