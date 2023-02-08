@@ -41,7 +41,8 @@ jobs:
         name: f setting simple step output
         run: echo "NAME=$(echo 'hej')" >> $GITHUB_OUTPUT
       
-      - id: g testing simple step output
+      - id: g
+        name: g testing simple step output
         run: echo ${{steps.f.outputs.NAME}}
 
 
