@@ -13,31 +13,49 @@ jobs:
     environment: dev
     runs-on: ubuntu-latest
     outputs:
-      a1: steps.a.outputs.NAME
-      b1: steps.b.outputs.NAME
-      url:  steps.c1.outputs.NAME
+      trnsformed: steps.a.outputs.NAME
+      easy: steps.f.outputs.NAME
+      url: steps.c.outputs.NAME
     steps:
       - id: a
+        name: a Setting transformation
         run: echo "NAME=$(echo ${{ inputs.a }} | tr '-' '_' |  tr '[a-z]' '[A-Z]')" >> $GITHUB_OUTPUT
+      
       - id: b
-        run: echo "NAME=$(echo 'hej')" >> $GITHUB_OUTPUT
-
-      - id: c
+        name: b testing transformation
         run: echo ${{steps.a.outputs.NAME}}
-
-      - id: c2
+      
+      - id: c
+        name: c Setting env transformation
         run: echo "NAME=$(echo ${{ secrets[format('URL_{0}', steps.a.outputs.NAME)] }})" >> $GITHUB_OUTPUT
       
       - id: d
-        run: echo ${{steps.b.outputs.NAME}}
+        name: d testing env transfotmation
+        run: echo ${{steps.c.outputs.NAME}}
+                    
+      - id: e testing secret output
+        run: echo ${{ secrets.URL_M_A }}
+      
+      - id: f
+        name: f setting simple step output
+        run: echo "NAME=$(echo 'hej')" >> $GITHUB_OUTPUT
+      
+      - id: g testing simple step output
+        run: echo ${{steps.f.outputs.NAME}}
+
 
   Read-job:
     runs-on: ubuntu-latest
     needs: simple
     steps:
-      - run: echo ${{needs.simple.outputs.a1}}
-      - run: echo ${{needs.simple.outputs.b1}}
-      - run: echo ${{needs.simple.outputs.url}}
+      - name: transformed
+        run: echo ${{needs.simple.outputs.trnsformed}}
+
+      - name: easy
+        run: echo ${{needs.simple.outputs.easy}}
+
+      - name: url
+        run: echo ${{needs.simple.outputs.url}}
 
   # job1:
   #   runs-on: ubuntu-latest
