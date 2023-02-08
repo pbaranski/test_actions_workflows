@@ -56,7 +56,7 @@ jobs:
     env:
         UNENCRYPTED_MAIN: ${{ secrets.URL_M_A }}
         URL: ${{ needs.simple.outputs.url }}
-        URL_SCR: ${{ secrets[format('URL_{0}', needs.simple.outputs.transformed)] }})
+        URL_SCR: ${{ secrets[format('URL_{0}', needs.simple.outputs.transformed)] }}
     steps:
       - name: transformed
         run: echo ${{needs.simple.outputs.transformed}}
@@ -78,6 +78,12 @@ jobs:
             print(q)
         shell: python
 
+      - name: url encript test
+        run: |
+          import os
+          for q in (os.getenv("UNENCRYPTED_MAIN")):
+            print(q)
+        shell: python
   # job1:
   #   runs-on: ubuntu-latest
   #   # Map a step output to a job output
