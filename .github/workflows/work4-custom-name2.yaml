@@ -13,7 +13,7 @@ jobs:
     environment: dev
     runs-on: ubuntu-latest
     outputs:
-      trnsformed: ${{steps.a.outputs.NAME}}
+      transformed: ${{steps.a.outputs.NAME}}
       easy: ${{steps.f.outputs.NAME}}
       url: ${{steps.c.outputs.NAME}}
     steps:
@@ -53,15 +53,30 @@ jobs:
   Read-job:
     runs-on: ubuntu-latest
     needs: simple
+    env:
+        UNENCRYPTED_MAIN: ${{ secrets.URL_M_A }}
+        URL: ${{ needs.simple.outputs.url }}
+        URL_SCR: ${{ secrets[format('URL_{0}', needs.simple.outputs.transformed)] }})
     steps:
       - name: transformed
-        run: echo ${{needs.simple.outputs.trnsformed}}
+        run: echo ${{needs.simple.outputs.transformed}}
 
       - name: easy
         run: echo ${{needs.simple.outputs.easy}}
 
       - name: url
-        run: echo ${{needs.simple.outputs.url}}
+        run: run: |
+          import os
+          for q in (os.getenv("URL")):
+          print(q)
+        shell: python
+
+      - name: url script
+        run: run: |
+          import os
+          for q in (os.getenv("URL_SCR")):
+          print(q)
+        shell: python
 
   # job1:
   #   runs-on: ubuntu-latest
