@@ -35,7 +35,7 @@ jobs:
       
       - id: d
         name: d testing env transfotmation
-        run: echo ${{steps.c.outputs.NAME}}
+        run: echo echo -n "${{steps.c.outputs.NAME}}" >> foo && cut -c1-3 foo && cut -c4
                     
       - id: e 
         name: e testing secret output
