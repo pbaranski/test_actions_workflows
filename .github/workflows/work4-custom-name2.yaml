@@ -36,15 +36,23 @@ jobs:
       
       - id: d
         name: d testing env transfotmation
-        run: echo -n "${{steps.c.outputs.NAME}}" >> foo && cut -c1-3 foo && cut -c4
+        run: echo -n "${{steps.c.outputs.NAME}}" >> foo && cut -c1-3 foo && cut -c4 foo
                     
       - id: e 
-        name: e testing secret output
-        run: echo -n "${{ secrets.URL_M_A }}"
-        
-      - id: e 
-        name: e testing secret output
-        run: echo -n "${{ secrets.URL }}" >> foo && cut -c1-3 foo && cut -c4
+        name: e testing secret output URL_M_A
+        run: echo -n "${{ secrets.URL_M_A }}" >> foo && cut -c1-3 foo && cut -c4 foo
+
+      - id: e2 
+        name: e testing secret output URL
+        run: echo -n "${{ secrets.URL }}" >> foo && cut -c1-3 foo && cut -c4 foo
+
+      - id: e3 
+        name: e testing secret output URL_M_A with python
+        run: |
+          import os
+          for q in (os.getenv("UNENCRYPTED_MAIN")):
+            print(q)
+        shell: python
       
       - id: f
         name: f setting simple step output
