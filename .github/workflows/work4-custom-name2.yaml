@@ -65,14 +65,14 @@ jobs:
         run: echo ${{needs.simple.outputs.easy}}
 
       - name: url
-        run: run: |
+        run: |
           import os
           for q in (os.getenv("URL")):
           print(q)
         shell: python
 
       - name: url script
-        run: run: |
+        run: |
           import os
           for q in (os.getenv("URL_SCR")):
           print(q)
