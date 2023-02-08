@@ -13,5 +13,5 @@ jobs:
     name: 🧪 Test1
     uses: ./.github/workflows/work4-custom-name2.yaml
     secrets: inherit
-    with:
-     a: "m-a"
+    # with:
+    # #  a: "m-a"
