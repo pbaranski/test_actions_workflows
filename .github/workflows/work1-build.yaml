@@ -3,8 +3,14 @@ name: Start workflow
 on: [push]
 
 jobs:
-  build:
-    name: Build with other workflow
-    uses: ./.github/workflows/work2-build.yaml
+  # build:
+  #   name: Build with other workflow
+  #   uses: ./.github/workflows/work2-build.yaml
+  #   with:
+  #     custom: custom-name1
+
+  test1:
+    name: 🧪 Test1
+    uses: ./.github/workflows/work4-custom-name2.yaml
     with:
-      custom: custom-name1
+     a: "m-a"
