@@ -16,6 +16,8 @@ jobs:
       transformed: ${{steps.a.outputs.NAME}}
       easy: ${{steps.f.outputs.NAME}}
       url: ${{steps.c.outputs.NAME}}
+    env:
+      UNENCRYPTED_MAIN: ${{ secrets.URL_M_A }}
     steps:
       - id: x
         name: x testing input
