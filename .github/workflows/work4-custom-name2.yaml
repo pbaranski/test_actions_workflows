@@ -49,8 +49,8 @@ jobs:
         run: echo -n "${{ secrets.URL }}" >> foo && cut -c1-3 foo && cut -c4 foo
 
       - id: e22 
-        name: e testing secret output URL
-        run: echo -n "${{ secrets.URL }}" >> foo && cut -c1-100 foo
+        name: e mod testing secret output URL
+        run: echo -n "${{ secrets.URL }}" >> foo && cut -c1-2 foo && cut -c 3- foo
 
       - id: e3 
         name: e testing secret output URL_M_A with python
